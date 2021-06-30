@@ -14,29 +14,31 @@ public class EmployeeWage {
 	int partTimeHrs = 4;
 	int fulltime = 2;
 	int parttime = 1;
-	
+	int empDailyWage;
 /**
- * @employeeCheckAndDailyWage is a method for UC1 And UC2 , UC4 "Check Employee is Present or Absent" And "Calculate Daily And Part TimeWage".
+ * @employeeCheckAndDailyWage is a method for UC4 Calculating Employee Wage By Using Switch Case".
  */
 	
 public void employeeCheckAndDailyWage() {
 	
-	double empCheck= Math.floor(Math.random()*10)%3;
+	int empCheck= (int) Math.floor(Math.random()*10)%3;
+	switch (empCheck) {	
 	
-	if ( empCheck == fulltime ){					// full Time daily Wage calculation
+case 2 :                                        // full Time daily Wage calculation
 	System.out.println("Employee is present");
 	int empDailyWage = wagePerHrs*fullDayHrs;
 	System.out.println("Employee Daily Wage :"+empDailyWage);
-	}
+	break;
 	
-	else if (empCheck == parttime ){                        //part time wage calculation Added
+case 1 :                         				//part time wage calculation Added
 		System.out.println("Employee is present in Part Time");
-		int empDailyWage = wagePerHrs*partTimeHrs;
-		System.out.println("Employee Part Time Wage :"+empDailyWage);
-	}
+		int empPartTimeWage = wagePerHrs*partTimeHrs;
+		System.out.println("Employee Part Time Wage :"+empPartTimeWage);
+	break;
 	
-	else if (empCheck==0){						// Employee is Absent
+case 0 : 										// Employee is Absent
 	System.out.println("Employee is absent,No Daily Wage");
+	break;
 	} 
 }
 /**

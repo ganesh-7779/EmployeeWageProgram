@@ -11,21 +11,31 @@ package com.bridgelabz;
 public class EmployeeWage {
 	int wagePerHrs = 20;
 	int fullDayHrs = 8;
+	int partTimeHrs = 4;
+	int fulltime = 2;
+	int parttime = 1;
 	
 /**
- * @employeeCheckAndDailyWage is a method for UC1 And UC2 "Check Employee is Present or Absent" And "Calculate Daily Wage".
+ * @employeeCheckAndDailyWage is a method for UC1 And UC2 , UC4 "Check Employee is Present or Absent" And "Calculate Daily And Part TimeWage".
  */
 	
 public void employeeCheckAndDailyWage() {
-	int IS_FULL_TIME = 1;
-	double empCheck= Math.floor(Math.random()*10)%2;
-	if ( empCheck == IS_FULL_TIME ){
-		
+	
+	double empCheck= Math.floor(Math.random()*10)%3;
+	
+	if ( empCheck == fulltime ){					// full Time daily Wage calculation
 	System.out.println("Employee is present");
 	int empDailyWage = wagePerHrs*fullDayHrs;
 	System.out.println("Employee Daily Wage :"+empDailyWage);
 	}
-	else{
+	
+	else if (empCheck == parttime ){                        //part time wage calculation Added
+		System.out.println("Employee is present in Part Time");
+		int empDailyWage = wagePerHrs*partTimeHrs;
+		System.out.println("Employee Part Time Wage :"+empDailyWage);
+	}
+	
+	else if (empCheck==0){						// Employee is Absent
 	System.out.println("Employee is absent,No Daily Wage");
 	} 
 }

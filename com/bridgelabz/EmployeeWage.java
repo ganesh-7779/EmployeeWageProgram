@@ -11,49 +11,52 @@ package com.bridgelabz;
  **/
 
 public class EmployeeWage {
-	int wagePerHrs = 20;
-	int fullDayHrs = 8;
-	int partTimeHrs = 4;
-	int fulltime = 2;
-	int parttime = 1;
-	int empDailyWage;
-	int dayPerMonth = 20;                       // Assuming 20 Working Day Per Month
+	
+	final static int WAGE_PER_HRS = 20;
+	final static int FULL_DAY_HRS = 8;
+	final static int PART_TIME_HRS = 4;
+	final static int IS_FULL_TIME = 2;
+	final static int IS_PART_TIME = 1;
+	final static int MAX_HRS = 100;
+	final static int DAY_PER_MONTH = 20;
 
-/**
- * @employeeCheckAndDailyWage is a method for UC5 Calculating Employee Wage By Using Switch Case For Month ".
- **/
-	
-public void employeeCheckAndDailyWage() {
-	
-	int empCheck= (int) Math.floor(Math.random()*10)%3;
-	switch (empCheck) {	
-	
-case 2 :                                        // full Time daily Wage calculation For Month
-	System.out.println("Employee is present");
-	int empDailyWage = wagePerHrs*fullDayHrs*dayPerMonth;
-	System.out.println("Employee Daily Wage :"+empDailyWage);
-	break;
-	
-case 1 :                         				//part time wage calculation Added for Month
-		System.out.println("Employee is present in Part Time");
-		int empPartTimeWage = wagePerHrs*partTimeHrs*dayPerMonth;
-		System.out.println("Employee Part Time Wage :"+empPartTimeWage);
-	break;
-	
-case 0 : 										// Employee is Absent
-	System.out.println("Employee is absent,No Daily Wage");
-	break;
-	} 
-}
+	/**
+	 * @param args is main method of class
+	 */
 
-/**
- * @param args is main method of class
- */
+	public static void main(String[] args) {
+		
+		System.out.println("Welcome To Employee Wage Computation Program");
+		
+		int totalEmpHrs = 0;
+		int totalMaxDay = 0;
+		int totalMaxEmpWage = 0;
+		
+		while (totalEmpHrs < MAX_HRS && totalMaxDay <= DAY_PER_MONTH) {
+			int empHrs = 0;
+			totalMaxDay++;
+			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+			
+			switch (empCheck) {
+			 
+			case IS_FULL_TIME :                                                       
+				empHrs=8;
+				break;
 
-public static void main(String[] args) {
-	
-System.out.println("Welcome To Employee Wage Computation Program");
-		EmployeeWage attendance = new EmployeeWage(); // Object of main class
-		attendance.employeeCheckAndDailyWage();       //invoke @employeeCheckAndDailyWage method though main class object.
-}
+			case IS_PART_TIME: 															
+				empHrs=4;
+				break;
+				
+			default:
+				empHrs=0;
+			}
+			
+			totalEmpHrs=totalEmpHrs+empHrs;
+			int empWage =empHrs*WAGE_PER_HRS;
+			totalMaxEmpWage=totalMaxEmpWage+empWage;
+			System.out.println("Emp Wage: "+empWage);
+																		
+		}
+		System.out.println("Total Employee Wage: "+totalMaxEmpWage);
+	}	
 }
